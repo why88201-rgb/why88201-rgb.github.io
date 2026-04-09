@@ -1,3 +1,5 @@
+# 白水Jimmy Official 网站
+
 ## 项目描述
 
 这是一个基于Flask框架开发的个人网站，包含文件上传、用户管理、信息收集、社区留言等功能。网站采用现代化的设计风格，支持响应式布局，可在不同设备上正常显示。
@@ -85,6 +87,31 @@
 
 8. **访问应用**
    运行 `heroku open` 打开应用
+
+### 部署到Render
+
+1. **创建Render账户**
+   访问 [Render官网](https://render.com/) 注册账户
+
+2. **创建新的Web服务**
+   - 登录Render后，点击 "New" -> "Web Service"
+   - 连接到你的GitHub仓库
+   - 选择要部署的仓库和分支
+
+3. **配置服务**
+   - **Name**: 输入服务名称
+   - **Runtime**: 选择 "Python 3"
+   - **Build Command**: 输入 `pip install -r requirements.txt`
+   - **Start Command**: 输入 `python app.py`
+   - **Environment Variables**: 添加以下环境变量
+     - `SECRET_KEY`: 你的密钥
+     - `ADMIN_PASSWORD`: 管理员密码
+
+4. **部署服务**
+   点击 "Create Web Service" 开始部署
+
+5. **访问应用**
+   部署完成后，Render会提供一个URL，通过该URL访问你的应用
 
 ## 项目结构
 
