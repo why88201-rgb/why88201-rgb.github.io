@@ -1,3 +1,4 @@
+# 白水Jimmy Official 网站
 
 ## 项目描述
 
@@ -38,13 +39,59 @@
    - 复制 `.env.example` 文件为 `.env`
    - 填写 `SECRET_KEY` 和 `ADMIN_PASSWORD` 等配置
 
-4. **启动应用**
+4. **初始化数据文件**（首次运行）
+   ```bash
+   python init_data.py
+   ```
+
+5. **启动应用**
    ```bash
    python app.py
    ```
 
-5. **访问网站**
+6. **访问网站**
    打开浏览器，访问 `http://localhost:5000`
+
+### 部署前检查
+
+在部署到GitHub或Render之前，建议运行部署检查脚本：
+
+```bash
+python check_deployment.py
+```
+
+此脚本会检查：
+- 必要文件是否存在
+- 数据文件是否已初始化
+- .gitignore配置是否正确
+- 敏感文件是否被正确排除
+
+### 部署到GitHub
+
+1. **初始化Git仓库**
+   ```bash
+   git init
+   ```
+
+2. **添加所有文件**
+   ```bash
+   git add .
+   ```
+
+3. **提交更改**
+   ```bash
+   git commit -m "Initial commit"
+   ```
+
+4. **添加远程仓库**
+   ```bash
+   git remote add origin <your-repo-url>
+   ```
+
+5. **推送到GitHub**
+   ```bash
+   git push -u origin main
+   ```
 
 ### 部署到GitHub Pages
 
@@ -116,22 +163,35 @@
 
 ```
 .
-├── app.py              # 应用主文件
-├── Procfile            # Heroku部署配置
-├── requirements.txt    # 依赖文件
-├── .env.example        # 环境变量示例
-├── README.md           # 项目说明
-├── uploads/            # 上传文件存储目录
-├── data/               # 数据文件存储目录
-└── templates/          # HTML模板目录
-    ├── index.html      # 首页
-    ├── login.html      # 登录页面
-    ├── community.html  # 社区页面
+├── app.py                 # 应用主文件
+├── Procfile               # Heroku/Render部署配置
+├── requirements.txt       # 依赖文件
+├── runtime.txt            # Python版本配置
+├── .env.example           # 环境变量示例
+├── .gitignore             # Git忽略文件配置
+├── README.md              # 项目说明
+├── LICENSE                # MIT许可证
+├── init_data.py           # 数据初始化脚本
+├── check_deployment.py    # 部署检查脚本
+├── uploads/               # 上传文件存储目录
+│   └── .gitkeep          # 确保目录被Git追踪
+├── data/                  # 数据文件存储目录
+│   ├── .gitkeep          # 确保目录被Git追踪
+│   ├── uploaded_files.json
+│   ├── registered_users.json
+│   ├── registration_requests.json
+│   ├── community_messages.json
+│   ├── user_data.json
+│   └── form_fields.json
+└── templates/             # HTML模板目录
+    ├── index.html         # 首页
+    ├── login.html         # 登录页面
+    ├── community.html     # 社区页面
     ├── info_collect.html  # 信息收集页面
     ├── edit_info_form.html  # 编辑表单页面
     ├── view_user_data.html  # 查看用户数据页面
     ├── review_registration.html  # 审核注册页面
-    └── success.html    # 成功页面
+    └── success.html       # 成功页面
 ```
 
 ## 管理员账户
