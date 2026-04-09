@@ -1,4 +1,3 @@
-# 白水Jimmy Official 网站
 
 ## 项目描述
 
