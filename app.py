@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 # 加载环境变量
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024 * 1024  # 5GB限制
 app.secret_key = os.environ.get('SECRET_KEY', 'your_secret_key')  # 用于会话管理
@@ -445,4 +445,4 @@ def delete_file(file_id):
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
